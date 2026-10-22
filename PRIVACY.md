@@ -8,4 +8,4 @@ Black Launcher does not collect, store, share or transmit any personal data.
 - The optional "Device admin" permission is used only to lock the screen when you double-tap. It cannot wipe, monitor or control anything else.
 - No analytics, advertising or third-party libraries are included.
 
-Contact: YOUR_EMAIL_HERE
+Contact: **Prafulgotmare1@gmail.com**
