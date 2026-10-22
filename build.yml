@@ -1,0 +1,27 @@
+name: Build APK and AAB
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore signing key (optional secret)
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          mkdir -p keys
+          if [ -n "$KEYSTORE_BASE64" ]; then echo "$KEYSTORE_BASE64" | base64 -d > keys/upload.keystore; fi
+      - name: Build
+        env:
+          KS_PASS: ${{ secrets.KS_PASS }}
+        run: |
+          [ -z "$KS_PASS" ] && unset KS_PASS || true
+          ./build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BlackLauncher-release
+          path: |
+            dist/BlackLauncher.apk
+            dist/BlackLauncher.aab
