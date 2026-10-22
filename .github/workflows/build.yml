@@ -18,7 +18,7 @@ jobs:
           KS_PASS: ${{ secrets.KS_PASS }}
         run: |
           [ -z "$KS_PASS" ] && unset KS_PASS || true
-          ./build.sh
+          bash build.sh
       - uses: actions/upload-artifact@v4
         with:
           name: BlackLauncher-release
